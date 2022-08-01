@@ -11,7 +11,7 @@ with the both features considration we had get the single feature vector which i
 
 To run the project
 
-firsly download the dataset from here 
+firsly download the dataset from [here](https://drive.google.com/file/d/1slGtHKHYTtiuC98yomV0hP3C85Q5V8sg/view)
 Unzip the dataset
 
 update the paths in `config.py`
