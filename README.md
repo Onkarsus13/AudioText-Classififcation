@@ -26,5 +26,7 @@ to get the f1 score on test set first download the model from [here](https://dri
 
 `python evaluate.py`
 
+On validattion set we get the f1 score of 0.92
+
 all the tensorboard training logs can be found [here](https://tensorboard.dev/experiment/e7qpsJwRRCm6gkW4OzYv5A/#scalars&runSelectionState=eyJBdWcwMV8xMy01Mi0zMV9ERVNLVE9QLTFDQkdFN04iOnRydWUsIkF1ZzAxXzEzLTQ4LTEyX0RFU0tUT1AtMUNCR0U3TiI6ZmFsc2V9)
 
