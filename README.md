@@ -22,8 +22,9 @@ to train the model
 
 `python train.py`
 
-to get the f1 score on test set first download the model from there
+to get the f1 score on test set first download the model from [here](https://drive.google.com/file/d/1O2x97oRxDSzd0PgbY0BHOFrZr3_PY_Wl/view?usp=sharing)
 
 `python evaluate.py`
 
 all the tensorboard training logs can be found here
+
