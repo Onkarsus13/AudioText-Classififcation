@@ -1,6 +1,6 @@
 import torch
 
-batch_size = 8
+batch_size = 20
 max_len = 10
 num_worker = 2
 shuffle = False
@@ -8,8 +8,7 @@ shuffle = False
 
 train_path = 'task_data/train_data.csv'
 val_path = 'task_data/valid_data.csv'
-test_path = ''
-
+test_path = '' #need test.csv 
 model_path = 'saved_model/'
 
 

@@ -34,6 +34,7 @@ class MultiSpeech(Dataset):
             norm="slaney",
             onesided=True,
             n_mels=n_mels,
+            mel_scale="htk"
         )
 
         self.class_dict_a, self.class_dict_o, self.class_dict_l = get_class_dicts()
@@ -42,8 +43,6 @@ class MultiSpeech(Dataset):
         return len(self.audio)
 
     def __getitem__(self, index):
-
-        print('task_data/'+ self.audio[index])
 
         SPEECH_WAVEFORM, _ = torchaudio.load('task_data/'+ self.audio[index])
 
@@ -118,17 +117,4 @@ def get_loader(path, max_len, batch_size, num_worker, shuffle):
     loader =  DataLoader(ds, batch_size=batch_size, collate_fn=collate_fn, shuffle=shuffle, num_workers=num_worker)
 
     return loader
-
-
-
-
-
-    
-
-    
-
-
-
-
-
 

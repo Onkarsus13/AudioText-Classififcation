@@ -79,9 +79,3 @@ def get_model_loss_optimizer(lr, device):
 
     return model, loss, optimizer
 
-
-
-
-
-
-

@@ -3,5 +3,7 @@ pandas
 torch
 torchmetrics
 torchaudio
+transformers
 tensorboard
 tqdm
+PySoundFile

@@ -61,6 +61,3 @@ def get_class_dicts():
 
     return class_dict_a, class_dict_o, class_dict_l
 
-
-
-

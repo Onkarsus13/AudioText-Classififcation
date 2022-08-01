@@ -82,8 +82,6 @@ def main(cfg):
         writer.add_scalar("Loss/val", total_val_loss, i)
 
 
-
-
         if total_val_loss < prev_loss:
 
             checkpoint = {
@@ -98,9 +96,3 @@ def main(cfg):
 
 if __name__ == "__main__":
     main(cfg)
-
-
-
-
-
-
