@@ -1,0 +1,7 @@
+numpy
+pandas
+torch
+torchmetrics
+torchaudio
+tensorboard
+tqdm
