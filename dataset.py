@@ -5,6 +5,7 @@ import torchaudio
 import torchaudio.transforms as T
 from torch.utils.data import Dataset, DataLoader
 from transformers import BertTokenizerFast
+from transformers import Wav2Vec2Processor
 import numpy as np
 
 class MultiSpeech(Dataset):
@@ -23,19 +24,7 @@ class MultiSpeech(Dataset):
         self.o = o
         self.l = l
 
-        self.mel_spectrogram = T.MelSpectrogram(
-            sample_rate=sample_rate,
-            n_fft=n_fft,
-            win_length=win_length,
-            hop_length=hop_length,
-            center=True,
-            pad_mode="reflect",
-            power=2.0,
-            norm="slaney",
-            onesided=True,
-            n_mels=n_mels,
-            mel_scale="htk"
-        )
+        self.mel_spectrogram = Wav2Vec2Processor.from_pretrained("facebook/hubert-large-ls960-ft")
 
         self.class_dict_a, self.class_dict_o, self.class_dict_l = get_class_dicts()
 
@@ -44,9 +33,9 @@ class MultiSpeech(Dataset):
 
     def __getitem__(self, index):
 
-        SPEECH_WAVEFORM, _ = torchaudio.load('task_data/'+ self.audio[index])
+        SPEECH_WAVEFORM, sr = torchaudio.load('task_data/'+ self.audio[index])
 
-        melspec = self.mel_spectrogram(SPEECH_WAVEFORM)
+        melspec = self.mel_spectrogram(SPEECH_WAVEFORM,  sampling_rate=sr, return_tensors="pt").input_values[0][0]
 
         return melspec, self.text[index], self.mask[index], self.class_dict_a[self.a[index]], self.class_dict_o[self.o[index]], self.class_dict_l[self.l[index]]
 
@@ -69,7 +58,6 @@ def collate_fn(batch):
     # Gather in lists, and encode labels as indices
     for waveform, t, m, i, j , k in batch:
 
-        waveform = waveform[0].permute(1, 0)
         text += [t]
         mask += [m]
         tensors += [waveform]
